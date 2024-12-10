@@ -45,7 +45,7 @@ export default function Intro() {
           >
             <Image
               src={profilePicture}
-              alt="Ricardo portrait"
+              alt="Burhan Profile Picture"
               width="192"
               height="192"
               quality="95"

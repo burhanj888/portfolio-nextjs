@@ -1,18 +1,9 @@
 "use client";
-// components/BlogList.tsx
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-
-import client from '@/sanity/client'; // Import your Sanity client
+import client from '@/sanity/client';
 import {PortableText, type SanityDocument } from "next-sanity";
 import { useSectionInView } from "@/lib/hooks";
-
-// type Blog = {
-//   _id: string;
-//   title: string;
-//   slug: { current: string };
-//   publishedAt: string;
-// };
 
 const options = { next: { revalidate: 30 } };
 const BlogList = () => {
@@ -70,11 +61,6 @@ const BlogList = () => {
               <p className="text-sm text-gray-400 mb-2">
                 Published: {new Date(blog.publishedAt).toLocaleDateString()}
               </p>
-              {/* <p className="text-gray-700 text-sm">
-                {blog.body.length > 100
-                  ? `${blog.body.slice(0, 100)}...`
-                  : blog.body}
-              </p> */}
             </div>
           </div>
         ))}

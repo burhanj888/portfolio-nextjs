@@ -5,6 +5,7 @@ import Link from 'next/link';
 
 import client from '@/sanity/client'; // Import your Sanity client
 import {PortableText, type SanityDocument } from "next-sanity";
+import { useSectionInView } from "@/lib/hooks";
 
 // type Blog = {
 //   _id: string;
@@ -16,7 +17,7 @@ import {PortableText, type SanityDocument } from "next-sanity";
 const options = { next: { revalidate: 30 } };
 const BlogList = () => {
   const [blogs, setBlogs] = useState<SanityDocument[]>([]);
-
+  const { ref } = useSectionInView("Blogs", 0.5);
   useEffect(() => {
     const fetchBlogs = async () => {
       const query = `
@@ -41,6 +42,7 @@ const BlogList = () => {
   }, []);
 
   return (
+    <section ref={ref} id="blogs" className="scroll-mt-28 m-5 sm:m-20 md:m-28">
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-4xl font-bold text-center mb-8">Blog List</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -78,6 +80,7 @@ const BlogList = () => {
         ))}
       </div>
     </div>
+    </section>
   );
 };
 
